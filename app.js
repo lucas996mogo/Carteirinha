@@ -46,16 +46,36 @@
     $("app").hidden = true;
     $("login").classList.add("active");
     $("lg-pass").value = "";
+    closeSidebar();
   });
 
-  // ---------- abas ----------
-  document.querySelectorAll(".bottom button").forEach(function (btn) {
+  // ---------- controle da sidebar ----------
+  var sidebar = $("sidebar");
+  var overlay = $("sidebar-overlay");
+
+  function openSidebar() {
+    sidebar.classList.add("open");
+    overlay.classList.add("open");
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("open");
+  }
+
+  $("menu-toggle").addEventListener("click", openSidebar);
+  $("sidebar-close").addEventListener("click", closeSidebar);
+  overlay.addEventListener("click", closeSidebar);
+
+  // ---------- abas (agora na sidebar) ----------
+  document.querySelectorAll(".sidebar-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      document.querySelectorAll(".bottom button").forEach(function (b) { b.classList.remove("on"); });
+      document.querySelectorAll(".sidebar-btn").forEach(function (b) { b.classList.remove("on"); });
       document.querySelectorAll(".tab").forEach(function (t) { t.classList.remove("active"); });
       btn.classList.add("on");
       $("tab-" + btn.dataset.tab).classList.add("active");
       window.scrollTo(0, 0);
+      closeSidebar();
     });
   });
 
@@ -157,7 +177,7 @@
   }
 
   function loadPhoto() {
-  var photoElem = $("photo");
+    var photoElem = $("photo");
     photoElem.style.backgroundImage = "url('images/lucas.jpeg')";
     photoElem.classList.add("has");
   }

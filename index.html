@@ -37,8 +37,26 @@
       <div class="hello">Olá, <span id="hello-name">Lucas</span></div>
       <div class="muted small" id="hello-course"></div>
     </div>
-    <button id="logout" class="icon-btn" aria-label="Sair">Sair</button>
+    <button id="menu-toggle" class="icon-btn" aria-label="Abrir menu">☰</button>
   </header>
+
+  <!-- SIDEBAR LATERAL -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <h2>Menu</h2>
+      <button id="sidebar-close" class="icon-btn" aria-label="Fechar menu">✕</button>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegação Principal">
+      <button data-tab="home" class="sidebar-btn on">Início</button>
+      <button data-tab="grades" class="sidebar-btn">Notas</button>
+      <button data-tab="schedule" class="sidebar-btn">Horários</button>
+      <button data-tab="card" class="sidebar-btn">Carteirinha</button>
+    </nav>
+    <div class="sidebar-footer">
+      <button id="logout" class="btn-logout" aria-label="Sair">Sair</button>
+    </div>
+  </aside>
 
   <!-- INÍCIO -->
   <section id="tab-home" class="screen tab active">
@@ -102,12 +120,6 @@
     </div>
   </section>
 
-  <nav class="bottom" aria-label="Navegação">
-    <button data-tab="home" class="on">Início</button>
-    <button data-tab="grades">Notas</button>
-    <button data-tab="schedule">Horários</button>
-    <button data-tab="card">Carteirinha</button>
-  </nav>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>

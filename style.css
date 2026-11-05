@@ -11,7 +11,7 @@
   --radius: 16px;
 
   --violet: #ED145B;     
-  --card-bg: #000000;     
+  --card-bg: #18181c;     
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -34,7 +34,7 @@ h3{font-size:1rem;font-weight:700;margin:24px 0 10px}
 /* telas */
 .screen{display:none}
 .screen.active{display:block}
-.tab{padding:0 16px 110px}
+.tab{padding:0 16px 40px}
 
 /* login */
 #login{min-height:100vh;padding:24px}
@@ -52,7 +52,7 @@ input[type=text],input:not([type]),input[type=password]{
 
 /* botões */
 .btn{border:0;border-radius:12px;padding:14px;font-weight:700;cursor:pointer}
-.btn.primary{background:var(--ink);color:#df2020}
+.btn.primary{background:var(--ink);color:#ED145B}
 .btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink-2)}
 .icon-btn{background:transparent;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.85rem;font-weight:700;cursor:pointer}
 
@@ -62,7 +62,7 @@ input[type=text],input:not([type]),input[type=password]{
 
 /* listas e tiles */
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-.tile{background:var(--ink);color:#ee2d2d;border-radius:var(--radius);padding:14px 12px;display:flex;flex-direction:column;gap:2px}
+.tile{background:var(--ink);color:#ED145B;border-radius:var(--radius);padding:14px 12px;display:flex;flex-direction:column;gap:2px}
 .tile b{font-size:1.5rem}
 .tile span{font-size:.75rem;opacity:.75}
 .list{list-style:none;display:flex;flex-direction:column;gap:8px}
@@ -78,18 +78,99 @@ input[type=text],input:not([type]),input[type=password]{
 .file input{font-size:.8rem;font-weight:500}
 .check{flex-direction:row;align-items:center;gap:8px;font-weight:600}
 
-/* navegação inferior */
-.bottom{
-  position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:480px;
-  background:var(--card);border-top:1px solid var(--line);
-  display:grid;grid-template-columns:repeat(4,1fr);
-  padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));
+/* --- SIDEBAR LATERAL --- */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 999;
 }
-.bottom button{background:none;border:0;padding:12px 4px;font-size:.78rem;font-weight:700;color:var(--muted);border-radius:10px;cursor:pointer}
-.bottom button.on{color:var(--ink);background:#ee2e15}
+.sidebar-overlay.open {
+  display: block;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100%;
+  background: var(--card);
+  border-left: 1px solid var(--line);
+  z-index: 1000;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.sidebar-header h2 {
+  margin: 0;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  flex: 1;
+}
+
+.sidebar-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--muted);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sidebar-btn:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+}
+.sidebar-btn.on {
+  color: var(--ink);
+  background: var(--mint);
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.btn-logout {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 1.5px solid var(--line);
+  color: var(--err);
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-logout:hover {
+  background: rgba(255, 85, 85, 0.1);
+}
 
 /* carteirinha (vertical, 54 x 85,6) */
-:root{--violet:#ED145B;--card-bg:#0B0B14}
 .scene{perspective:1100px;margin:6px auto 10px;width:min(100%,290px)}
 .card{
   position:relative;width:100%;aspect-ratio:54/85.6;
@@ -102,6 +183,7 @@ input[type=text],input:not([type]),input[type=password]{
   position:absolute;inset:0;border-radius:18px;overflow:hidden;
   backface-visibility:hidden;-webkit-backface-visibility:hidden;
   background-color:var(--card-bg);background-size:cover;background-position:center;
+  border: 1px solid var(--line);
 }
 .back{transform:rotateY(180deg)}
 .overlay{position:absolute;inset:0;padding:22px 20px 40px;display:flex;flex-direction:column;color:#fff}
