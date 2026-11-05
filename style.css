@@ -52,7 +52,7 @@ input[type=text],input:not([type]),input[type=password]{
 
 /* botões */
 .btn{border:0;border-radius:12px;padding:14px;font-weight:700;cursor:pointer}
-.btn.primary{background:var(--ink);color:#fff}
+.btn.primary{background:var(--ink);color:#df2020}
 .btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink-2)}
 .icon-btn{background:transparent;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.85rem;font-weight:700;cursor:pointer}
 
@@ -62,7 +62,7 @@ input[type=text],input:not([type]),input[type=password]{
 
 /* listas e tiles */
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-.tile{background:var(--ink);color:#fff;border-radius:var(--radius);padding:14px 12px;display:flex;flex-direction:column;gap:2px}
+.tile{background:var(--ink);color:#ee2d2d;border-radius:var(--radius);padding:14px 12px;display:flex;flex-direction:column;gap:2px}
 .tile b{font-size:1.5rem}
 .tile span{font-size:.75rem;opacity:.75}
 .list{list-style:none;display:flex;flex-direction:column;gap:8px}
@@ -86,7 +86,7 @@ input[type=text],input:not([type]),input[type=password]{
   padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));
 }
 .bottom button{background:none;border:0;padding:12px 4px;font-size:.78rem;font-weight:700;color:var(--muted);border-radius:10px;cursor:pointer}
-.bottom button.on{color:var(--ink);background:#E6F6F0}
+.bottom button.on{color:var(--ink);background:#ee2e15}
 
 /* carteirinha (vertical, 54 x 85,6) */
 :root{--violet:#ED145B;--card-bg:#0B0B14}
