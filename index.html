@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portal do Aluno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<main id="login" class="screen active">
+  <div class="login-box">
+    <div class="brand">FIAP<span>+</span></div>
+    <p class="muted">Portal do aluno.</p>
+    <label>Matrícula
+      <input id="lg-mat" inputmode="numeric" autocomplete="off" placeholder="20240001">
+    </label>
+    <label>Senha
+      <input id="lg-pass" type="password" autocomplete="off" placeholder="demo1234">
+    </label>
+    <p id="lg-err" class="err" role="alert" hidden>Matrícula ou senha incorreta.</p>
+    <button id="lg-btn" class="btn primary">Entrar</button>
+  </div>
+</main>
+
+<!-- APP -->
+<div id="app" hidden>
+  <header class="top">
+    <div>
+      <div class="hello">Olá, <span id="hello-name">Lucas</span></div>
+      <div class="muted small" id="hello-course"></div>
+    </div>
+    <button id="logout" class="icon-btn" aria-label="Sair">Sair</button>
+  </header>
+
+  <!-- INÍCIO -->
+  <section id="tab-home" class="screen tab active">
+    <div class="tiles">
+      <div class="tile"><b>8,4</b><span>Média geral</span></div>
+      <div class="tile"><b>92%</b><span>Frequência</span></div>
+      <div class="tile"><b>5º</b><span>Semestre</span></div>
+    </div>
+    <h2>Segunda-feira</h2>
+    <ul class="list" id="today-list"></ul>
+    <h2>Avisos</h2>
+    <ul class="list">
+      <li><b>Rematrícula aberta</b><span class="muted small">Até o fim do mês, pela secretaria virtual.</span></li>
+      <li><b>Entrega do projeto final</b><span class="muted small">Prazo na última semana de aula.</span></li>
+    </ul>
+  </section>
+
+  <!-- NOTAS -->
+  <section id="tab-grades" class="screen tab">
+    <h2>Notas do semestre</h2>
+    <ul class="list" id="grades-list"></ul>
+  </section>
+
+  <!-- HORÁRIOS -->
+  <section id="tab-schedule" class="screen tab">
+    <h2>Grade de horários</h2>
+    <div id="schedule"></div>
+  </section>
+
+  <!-- CARTEIRINHA -->
+  <section id="tab-card" class="screen tab">
+    <h2>Carteirinha digital</h2>
+
+    <div class="scene">
+      <div class="card" id="card" role="button" tabindex="0" aria-label="Virar carteirinha">
+        <div class="face front" id="face-front">
+          <div class="overlay" id="ov-front">
+            <div class="photo" id="photo"><span>Foto</span></div>
+            <div class="bottom-block">
+              <div class="wordmark">FIAP<i>+</i></div>
+              <div class="c-name" id="c-name"></div>
+              <div class="c-course" id="c-course"></div>
+            </div>
+          </div>
+        </div>
+        <div class="face back" id="face-back">
+          <div class="overlay" id="ov-back">
+            <div class="wordmark">FIAP<i>+</i></div>
+            <div class="rule"></div>
+            <dl class="data">
+              <div><dt>Matrícula</dt><dd id="c-mat"></dd></div>
+              <div><dt>CPF</dt><dd>434.131.778-42</dd></div>
+              <div><dt>Data de Nascimento</dt><dd>01/08/00</dd></div>
+              <div><dt>RG</dt><dd>37.880.749-3</dd></div>
+              <div><dt>Validade</dt><dd id="c-val"></dd></div>
+            </dl>
+            <div class="qr" id="qr"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="bottom" aria-label="Navegação">
+    <button data-tab="home" class="on">Início</button>
+    <button data-tab="grades">Notas</button>
+    <button data-tab="schedule">Horários</button>
+    <button data-tab="card">Carteirinha</button>
+  </nav>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
